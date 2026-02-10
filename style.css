@@ -1,0 +1,110 @@
+@font-face {
+    font-family: 'SpecialElite-Regular';
+    src: url('fuentes/SpecialElite-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Cinzel-VariableFont_wght';
+    /* AGREGUÉ EL .ttf AL FINAL PARA QUE FUNCIONE */
+    src: url('fuentes/Cinzel-VariableFont_wght.ttf'); 
+}
+
+body {
+    background-color: #0a0a0a;
+    color: #e0e0e0;
+    /* Fuente por defecto para todo el sitio */
+    font-family: 'SpecialElite-Regular', monospace; 
+    margin: 0;
+    overflow-x: hidden;
+}
+
+/* TÍTULO PRINCIPAL: HOOLIGANS */
+h1.glitch {
+    /* Aquí dejamos la SpecialElite si la quieres estilo máquina de escribir */
+    font-family: 'SpecialElite-Regular', serif; 
+    color: #8B0000;
+    text-align: center;
+    font-size: 5rem;
+    text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+}
+
+.subtitulo {
+    /* Aquí forzamos el uso de Cinzel */
+    font-family: 'Cinzel-VariableFont_wght', serif; 
+    font-size: 1.5rem;
+    color: #b0b0b0;
+    text-align: center;
+    margin-top: 20px;
+    letter-spacing: 2px; /* Aumenté un poco para que se vea más épico */
+}
+
+/* --- EFECTOS DE NIEBLA --- */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: url('imagenes/humo.jpg');
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.capa-niebla {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 200%;
+    height: 100%;
+    background-image: url('imagenes/humo.jpg');
+    background-repeat: repeat-x;
+    opacity: 0.3;
+    z-index: 10;
+    pointer-events: none;
+    animation: moverNiebla 20s linear infinite;
+    mix-blend-mode: screen; /* Esto ayuda si tu humo.jpg tiene fondo negro */
+}
+
+@keyframes moverNiebla {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+.menu-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.85);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid #8B0000;
+}
+.menu-fijo ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+.menu-fijo ul li {
+    margin: 0 25px;
+}
+.menu-fijo ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.menu-fijo ul li a:hover {
+    color: #8B0000;
+    text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
+}
+#inicio {
+    padding-top: 100px;
+}
+html {
+    scroll-behavior: smooth;
+}
