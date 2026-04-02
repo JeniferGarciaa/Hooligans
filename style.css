@@ -1,3 +1,4 @@
+/* --- FUENTES --- */
 @font-face {
     font-family: 'SpecialElite-Regular';
     src: url('fuentes/SpecialElite-Regular.ttf');
@@ -5,37 +6,181 @@
 
 @font-face {
     font-family: 'Cinzel-VariableFont_wght';
-    /* AGREGUÉ EL .ttf AL FINAL PARA QUE FUNCIONE */
     src: url('fuentes/Cinzel-VariableFont_wght.ttf'); 
+}
+
+/* --- CONFIGURACIÓN GLOBAL --- */
+html {
+    scroll-behavior: smooth;
 }
 
 body {
     background-color: #0a0a0a;
     color: #e0e0e0;
-    /* Fuente por defecto para todo el sitio */
     font-family: 'SpecialElite-Regular', monospace; 
     margin: 0;
+    padding: 0;
     overflow-x: hidden;
 }
 
-/* TÍTULO PRINCIPAL: HOOLIGANS */
+/* --- SECCIONES PARA SCROLL --- */
+section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 2; /* Por encima de la niebla de fondo */
+}
+
+/* --- MENÚ FIJO --- */
+.menu-fijo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(10, 10, 10, 0.95);
+    z-index: 1000;
+    padding: 15px 0;
+    border-bottom: 1px solid #8B0000;
+}
+
+.menu-fijo ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-fijo ul li {
+    margin: 0 25px;
+}
+
+.menu-fijo ul li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+
+.menu-fijo ul li a:hover {
+    color: #8B0000;
+    text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
+}
+
+/* --- SECCIÓN INICIO --- */
 h1.glitch {
-    /* Aquí dejamos la SpecialElite si la quieres estilo máquina de escribir */
     font-family: 'SpecialElite-Regular', serif; 
     color: #8B0000;
     text-align: center;
     font-size: 5rem;
     text-shadow: 2px 2px 10px rgba(255, 0, 0, 0.5);
+    margin: 0;
 }
 
 .subtitulo {
-    /* Aquí forzamos el uso de Cinzel */
     font-family: 'Cinzel-VariableFont_wght', serif; 
     font-size: 1.5rem;
     color: #b0b0b0;
     text-align: center;
     margin-top: 20px;
-    letter-spacing: 2px; /* Aumenté un poco para que se vea más épico */
+    letter-spacing: 2px;
+}
+
+/* --- SECCIÓN HISTORIA (EFECTO DIAMANTE) --- */
+.titulo-historia {
+    font-family: 'SpecialElite-Regular', serif;
+    color: #8B0000;
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 0 0 15px rgba(139, 0, 0, 0.6);
+}
+
+.contenedor-historia {
+    max-width: 950px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.texto-piramide {
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #d0d0d0;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0;
+}
+
+/* --- SECCIÓN PRODUCTOS (CUADRÍCULA 3x2) --- */
+.titulo-seccion {
+    font-family: 'SpecialElite-Regular', serif;
+    color: #8B0000;
+    font-size: 3rem;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.contenedor-productos {
+    display: grid;
+    /* Crea 3 columnas exactas de 280px */
+    grid-template-columns: repeat(3, 280px);
+    gap: 25px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    justify-content: center;
+}
+
+.tarjeta-producto {
+    background-color: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 15px;
+    text-align: left;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.tarjeta-producto:hover {
+    border-color: #8B0000;
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(139, 0, 0, 0.4);
+}
+
+.tarjeta-producto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain; /* Para que tus PNG no se corten */
+    background-color: #000;
+    border-radius: 2px;
+    margin-bottom: 15px;
+}
+
+.tarjeta-producto h3 {
+    font-family: 'SpecialElite-Regular', monospace;
+    color: #e0e0e0;
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.tarjeta-producto p {
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    color: #8B0000;
+    font-size: 1.1rem;
+    margin: 5px 0;
+    font-weight: bold;
 }
 
 /* --- EFECTOS DE NIEBLA --- */
@@ -58,11 +203,11 @@ body::before {
     height: 100%;
     background-image: url('imagenes/humo.jpg');
     background-repeat: repeat-x;
-    opacity: 0.3;
-    z-index: 10;
+    opacity: 0.25;
+    z-index: 1; /* Por debajo del contenido */
     pointer-events: none;
-    animation: moverNiebla 20s linear infinite;
-    mix-blend-mode: screen; /* Esto ayuda si tu humo.jpg tiene fondo negro */
+    animation: moverNiebla 30s linear infinite;
+    mix-blend-mode: screen;
 }
 
 @keyframes moverNiebla {
@@ -70,41 +215,100 @@ body::before {
     to { transform: translateX(-50%); }
 }
 
-.menu-fijo {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    background-color: rgba(10, 10, 10, 0.85);
-    z-index: 1000;
-    padding: 15px 0;
-    border-bottom: 1px solid #8B0000;
+/* --- RESPONSIVE (CELULARES) --- */
+@media (max-width: 900px) {
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, 280px);
+    }
+    
+    h1.glitch {
+        font-size: 3rem;
+    }
 }
-.menu-fijo ul {
-    list-style: none;
+/* --- SECCIÓN CONTACTO --- */
+.contenedor-contacto {
     display: flex;
-    justify-content: center;
-    margin: 0;
-    padding: 0;
+    gap: 50px;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 30px;
 }
-.menu-fijo ul li {
-    margin: 0 25px;
+
+.info-contacto p {
+    flex: 1;
+    font-family: 'Cinzel-VariableFont_wght', monospace;
+    color: #e0e0e0;
+    margin-bottom: 20px;
 }
-.menu-fijo ul li a {
+.label {
+    font-family: 'SpecialElite-Regular', monospace;
+    color: #8B0000;
+    display: block;
+    margin-bottom: 5px;
+}
+.link-insta {
+    color: #e0e0e0;
     text-decoration: none;
-    color: #ffffff;
-    font-family: 'Cinzel-VariableFont_wght', serif;
-    font-size: 1.1rem;
-    letter-spacing: 2px;
     transition: 0.3s;
 }
-.menu-fijo ul li a:hover {
+.link-insta:hover {
     color: #8B0000;
-    text-shadow: 0 0 8px rgba(139, 0, 0, 0.8);
+    text-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
 }
-#inicio {
-    padding-top: 100px;
+
+.info-contacto strong {
+    color: #8B0000;
 }
-html {
-    scroll-behavior: smooth;
+
+.formulario-contacto {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.formulario-contacto input, 
+.formulario-contacto textarea {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid #333;
+    padding: 12px;
+    color: white;
+    font-family: 'SpecialElite-Regular', monospace;
+    border-radius: 4px;
+}
+
+.formulario-contacto input:focus, 
+.formulario-contacto textarea:focus {
+    border-color: #8B0000;
+    outline: none;
+}
+
+.formulario-contacto textarea {
+    height: 120px;
+    resize: none;
+}
+
+.boton-ritual {
+    background-color: #8B0000;
+    color: white;
+    border: none;
+    padding: 15px;
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    letter-spacing: 2px;
+}
+
+.boton-ritual:hover {
+    background-color: #ff0000;
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+}
+
+/* Ajuste para celulares */
+@media (max-width: 768px) {
+    .contenedor-contacto {
+        flex-direction: column;
+        text-align: center;
+    }
 }
