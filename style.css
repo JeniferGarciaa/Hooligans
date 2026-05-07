@@ -312,3 +312,86 @@ body::before {
         text-align: center;
     }
 }
+/*Seccion Personajes */
+.contenedor-personajes {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+.tarjeta-pj {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.fila-invertida {
+    flex-direction: row; /* En PC se ven de lado a lado */
+}
+
+.img-pj {
+    width: 350px; /* Ajusta según el tamaño de tus dibujos */
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4)); /* Sombra roja sutil */
+    transition: 0.5s;
+}
+
+.img-pj:hover {
+    filter: drop-shadow(0 0 30px rgba(139, 0, 0, 0.8));
+    transform: scale(1.05);
+}
+
+.info-pj {
+    max-width: 300px;
+}
+
+.info-pj h3 {
+    font-family: 'SpecialElite-Regular', monospace;
+    color: #8B0000;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.info-pj p {
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.info-pj strong {
+    color: #8B0000;
+    font-family: 'SpecialElite-Regular', monospace;
+}
+
+/* Ajuste para que en celular se vean uno sobre otro */
+@media (max-width: 768px) {
+    .tarjeta-pj, .fila-invertida {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+.lista-caracteristicas {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    color: #d0d0d0;
+}
+
+.lista-caracteristicas li {
+    margin-bottom: 8px; 
+    font-size: 1rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.lista-caracteristicas li::before {
+    content: "—";
+    color: #8B0000;
+    position: absolute;
+    left: 0;
+}
