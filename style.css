@@ -189,7 +189,7 @@ body::before {
     position: fixed;
     top: 0; left: 0;
     width: 100%; height: 100%;
-    background: url('imagenes/humo.jpg');
+    background: url('IMG/humo.jpg');
     opacity: 0.1;
     pointer-events: none;
     z-index: 1;
@@ -201,7 +201,7 @@ body::before {
     left: 0;
     width: 200%;
     height: 100%;
-    background-image: url('imagenes/humo.jpg');
+    background-image: url('IMG/humo.jpg');
     background-repeat: repeat-x;
     opacity: 0.25;
     z-index: 1; /* Por debajo del contenido */
