@@ -33,7 +33,7 @@ section {
     padding: 100px 20px;
     box-sizing: border-box;
     position: relative;
-    z-index: 2; /* Por encima de la niebla de fondo */
+    z-index: 2;
 }
 
 /* --- MENÚ FIJO --- */
@@ -122,7 +122,7 @@ h1.glitch {
     margin: 0;
 }
 
-/* --- SECCIÓN PRODUCTOS (CUADRÍCULA 3x2) --- */
+/* --- SECCIÓN PRODUCTOS --- */
 .titulo-seccion {
     font-family: 'SpecialElite-Regular', serif;
     color: #8B0000;
@@ -133,7 +133,6 @@ h1.glitch {
 
 .contenedor-productos {
     display: grid;
-    /* Crea 3 columnas exactas de 280px */
     grid-template-columns: repeat(3, 280px);
     gap: 25px;
     max-width: 1000px;
@@ -162,7 +161,7 @@ h1.glitch {
 .tarjeta-producto img {
     width: 100%;
     height: 200px;
-    object-fit: contain; /* Para que tus PNG no se corten */
+    object-fit: contain;
     background-color: #000;
     border-radius: 2px;
     margin-bottom: 15px;
@@ -201,10 +200,10 @@ body::before {
     left: 0;
     width: 200%;
     height: 100%;
-    background-image: url('IMG/humo.jpg');
+    background-image: url('IMG/humo.jpg'); 
     background-repeat: repeat-x;
     opacity: 0.25;
-    z-index: 1; /* Por debajo del contenido */
+    z-index: 1;
     pointer-events: none;
     animation: moverNiebla 30s linear infinite;
     mix-blend-mode: screen;
@@ -215,16 +214,78 @@ body::before {
     to { transform: translateX(-50%); }
 }
 
-/* --- RESPONSIVE (CELULARES) --- */
-@media (max-width: 900px) {
-    .contenedor-productos {
-        grid-template-columns: repeat(auto-fit, 280px);
-    }
-    
-    h1.glitch {
-        font-size: 3rem;
-    }
+/* --- SECCIÓN PERSONAJES --- */
+.contenedor-personajes {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    max-width: 1000px;
+    width: 100%;
 }
+
+.tarjeta-pj {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.fila-invertida {
+    flex-direction: row-reverse; 
+}
+
+.img-pj {
+    width: 350px;
+    height: auto;
+    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4));
+    transition: 0.5s;
+}
+
+.img-pj:hover {
+    filter: drop-shadow(0 0 30px rgba(139, 0, 0, 0.8));
+    transform: scale(1.05);
+}
+
+.info-pj {
+    max-width: 400px;
+}
+
+.info-pj h3 {
+    font-family: 'SpecialElite-Regular', monospace;
+    color: #8B0000;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+.info-pj p {
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin: 10px 0;
+}
+
+.lista-caracteristicas {
+    list-style: none; 
+    padding: 0;
+    margin: 0;
+    font-family: 'Cinzel-VariableFont_wght', serif;
+    color: #d0d0d0;
+}
+
+.lista-caracteristicas li {
+    margin-bottom: 8px; 
+    font-size: 1rem;
+    position: relative;
+    padding-left: 15px;
+}
+
+.lista-caracteristicas li::before {
+    content: "—";
+    color: #8B0000;
+    position: absolute;
+    left: 0;
+}
+
 /* --- SECCIÓN CONTACTO --- */
 .contenedor-contacto {
     display: flex;
@@ -235,29 +296,27 @@ body::before {
 }
 
 .info-contacto p {
-    flex: 1;
-    font-family: 'Cinzel-VariableFont_wght', monospace;
+    font-family: 'Cinzel-VariableFont_wght', serif;
     color: #e0e0e0;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
+
 .label {
     font-family: 'SpecialElite-Regular', monospace;
     color: #8B0000;
     display: block;
     margin-bottom: 5px;
 }
+
 .link-insta {
     color: #e0e0e0;
     text-decoration: none;
     transition: 0.3s;
 }
+
 .link-insta:hover {
     color: #8B0000;
     text-shadow: 0 0 10px rgba(139, 0, 0, 0.8);
-}
-
-.info-contacto strong {
-    color: #8B0000;
 }
 
 .formulario-contacto {
@@ -305,93 +364,18 @@ body::before {
     box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
 }
 
-/* Ajuste para celulares */
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, 280px);
+    }
+    h1.glitch { font-size: 3rem; }
+}
+
 @media (max-width: 768px) {
-    .contenedor-contacto {
+    .contenedor-contacto, .tarjeta-pj, .fila-invertida {
         flex-direction: column;
         text-align: center;
     }
-}
-/*Seccion Personajes */
-.contenedor-personajes {
-    display: flex;
-    flex-direction: column;
-    gap: 80px;
-    max-width: 1000px;
-    width: 100%;
-}
-
-.tarjeta-pj {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.fila-invertida {
-    flex-direction: row; /* En PC se ven de lado a lado */
-}
-
-.img-pj {
-    width: 350px; /* Ajusta según el tamaño de tus dibujos */
-    height: auto;
-    filter: drop-shadow(0 0 15px rgba(139, 0, 0, 0.4)); /* Sombra roja sutil */
-    transition: 0.5s;
-}
-
-.img-pj:hover {
-    filter: drop-shadow(0 0 30px rgba(139, 0, 0, 0.8));
-    transform: scale(1.05);
-}
-
-.info-pj {
-    max-width: 300px;
-}
-
-.info-pj h3 {
-    font-family: 'SpecialElite-Regular', monospace;
-    color: #8B0000;
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-}
-
-.info-pj p {
-    font-family: 'Cinzel-VariableFont_wght', serif;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin: 10px 0;
-}
-
-.info-pj strong {
-    color: #8B0000;
-    font-family: 'SpecialElite-Regular', monospace;
-}
-
-/* Ajuste para que en celular se vean uno sobre otro */
-@media (max-width: 768px) {
-    .tarjeta-pj, .fila-invertida {
-        flex-direction: column;
-        text-align: center;
-    }
-}
-.lista-caracteristicas {
-    list-style: none; 
-    padding: 0;
-    margin: 0;
-    font-family: 'Cinzel-VariableFont_wght', serif;
-    color: #d0d0d0;
-}
-
-.lista-caracteristicas li {
-    margin-bottom: 8px; 
-    font-size: 1rem;
-    position: relative;
-    padding-left: 15px;
-}
-
-.lista-caracteristicas li::before {
-    content: "—";
-    color: #8B0000;
-    position: absolute;
-    left: 0;
+    .img-pj { width: 280px; }
 }
